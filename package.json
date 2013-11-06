@@ -1,0 +1,13 @@
+{
+  "name": "mcp3008reader",
+  "version": "0.0.1",
+  "author": "Ricco Forgaard <ricco@fiskeben.dk>",
+  "description": "allows reading from MCP3008 using hardware SPI",
+  "main": "./reader.js",
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "gypfile": true,
+  "license": "MIT",
+  "private": true
+}

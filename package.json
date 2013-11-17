@@ -1,13 +1,11 @@
 {
-  "name": "mcp3008reader",
-  "version": "0.0.1",
+  "name": "mcp3008.js",
+  "version": "0.1.0",
   "author": "Ricco Forgaard <ricco@fiskeben.dk>",
-  "description": "allows reading from MCP3008 using hardware SPI",
-  "main": "./reader.js",
-  "scripts": {
-    "install": "node-gyp rebuild"
-  },
-  "gypfile": true,
+  "description": "Read values from MCP3008 ADC using SPI.",
+  "main": "./mcp3008.js",
   "license": "MIT",
-  "private": true
+  "devDependencies": {
+    "spi": "~0.1.0"
+  }
 }

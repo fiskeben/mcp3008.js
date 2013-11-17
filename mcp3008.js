@@ -21,7 +21,7 @@ function startPoll (channel, callback) {
     }, timeout);
 }
 
-var Reader = function (device) {
+var Mcp3008 = function (device) {
     this.device = device || '/dev/spidev0.0';
     spi = new SPI.Spi(this.device, [], function (s) {
         s.open();
@@ -40,4 +40,4 @@ var Reader = function (device) {
     }
 };
 
-module.exports = Reader;
+module.exports = Mcp3008;

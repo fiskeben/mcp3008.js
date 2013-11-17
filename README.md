@@ -13,7 +13,7 @@ $ npm install mcp3008.js
 Here's a short example:
 
 ```
-var Mcp3008 = require('mcp3008'),
+var Mcp3008 = require('mcp3008.js'),
     adc = new Mcp3008(),
     channel = 0;
 

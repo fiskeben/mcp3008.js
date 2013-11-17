@@ -1,9 +1,13 @@
-var Reader = require('./reader');
+/**
+This is just a dumb test to check that the MCP3008 works. It requires the ADC to be wired up and have something connected to channel 0. Edit as necessary to suit your setup.
+*/
 
-var r = new Reader();
+var Mcp3008 = require('./mcp3008'),
+    adc = new Mcp3008(),
+    out = function (value) {
+        console.log("Read", value);
+    };
 
-r.poll(0, 250, function (value) {
-    console.log("Read", value);
-});
-
-setTimeout(function () { r.close(); }, 10000);
+adc.read(0, out);
+adc.poll(0, 50, out);
+setTimeout(function () { adc.close(); }, 1000);

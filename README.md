@@ -2,6 +2,8 @@
 
 A node.js module for interfacing the MCP3008 analog/digital converter.
 
+The same instance of the module can control all eight channels on the converter.
+
 ## Installation
 
 ```
@@ -46,12 +48,12 @@ This will read the value on `channel` and send it to `callback`.
 instance.poll(channel, interval, callback);
 ```
 
-This will read the value on `channel` every `interval` milliseconds and send it to `callback`. Use `instance.stop()` to stop it.
+This will read the value on `channel` every `interval` milliseconds and send it to `callback`. Use `instance.stop(channel)` to stop it.
 
 ### Tear down
 
 ```
-instance.stop();
+instance.close();
 ```
 
 This will release the device and stop polling (if any).

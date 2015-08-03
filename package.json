@@ -10,6 +10,6 @@
     "url": "https://github.com/fiskeben/mcp3008.js"
   },
   "dependencies": {
-    "spi": "~0.1.0"
+    "spi": "~0.2.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "mcp3008.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Ricco Forgaard <ricco@fiskeben.dk>",
   "description": "Read values from MCP3008 ADC using SPI.",
   "main": "./mcp3008.js",

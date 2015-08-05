@@ -36,9 +36,14 @@ function stopInstance (instance) {
     }
 }
 
-var Mcp3008 = function (dev) {
+var Mcp3008 = function (dev, options) {
     device = dev || device;
-    spi = new SPI.Spi(device, [], function (s) {
+    options = options || {
+        mode: 0,        // Mode 0
+        chipSelect: 0,  // Low
+        maxSpeed: 15000 // 15khz is a good speed for the mcp3008
+    };
+    spi = new SPI.Spi(device, options, function (s) {
         s.open();
     });
 

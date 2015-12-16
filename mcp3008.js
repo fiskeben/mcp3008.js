@@ -1,4 +1,4 @@
-SPI = require('spi');
+var SPI = require('pi-spi');
 
 var channels = [],
     device = '/dev/spidev0.0',
@@ -14,10 +14,14 @@ function read(channel, callback) {
     if (spi === undefined)
         return;
 
-    var txBuf = new Buffer([1, 8 + channel << 4, 0]),
-        rxBuf = new Buffer([0,0,0]);
+    var txBuf = new Buffer(3);
+    txBuf.writeUInt8(1, 0);
+    txBuf.writeUInt8((8 + channel) << 4, 1);
+    txBuf.writeUInt8(0, 2);
 
-    spi.transfer(txBuf, rxBuf, function (dev, buffer) {
+    spi.transfer(txBuf, function (err, buffer) {
+        if (err) throw err;
+
         var value = ((buffer[1] & 3) << 8) + buffer[2];
         callback(value);
     });
@@ -30,22 +34,9 @@ function startPoll (channel, callback) {
     }, channels[channel].timeout);
 }
 
-function stopInstance (instance) {
-    if (instance != undefined) {
-        clearInterval(instance.poller);
-    }
-}
-
-var Mcp3008 = function (dev, options) {
+var Mcp3008 = function (dev) {
     device = dev || device;
-    options = options || {
-        mode: 0,        // Mode 0
-        chipSelect: 0,  // Low
-        maxSpeed: 15000 // 15khz is a good speed for the mcp3008
-    };
-    spi = new SPI.Spi(device, options, function (s) {
-        s.open();
-    });
+    spi = SPI.initialize(device);
 
     this.read = read;
 

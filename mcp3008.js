@@ -27,6 +27,12 @@ function read(channel, callback) {
     });
 }
 
+function stopInstance (instance) {
+    if (instance !== undefined) {
+        clearInterval(instance.poller);
+    }
+}
+
 function startPoll (channel, callback) {
     isLegalChannel(channel);
     channels[channel].poller = setInterval(function () {

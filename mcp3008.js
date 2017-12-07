@@ -28,7 +28,7 @@ function read(channel, callback) {
 }
 
 function stopInstance (instance) {
-    if (instance != undefined) {
+    if (instance !== undefined) {
         clearInterval(instance.poller);
     }
 }
